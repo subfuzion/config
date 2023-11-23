@@ -1,0 +1,43 @@
+{
+  "name": "@subfuzion/basic-express-config",
+  "private": true,
+  "description": "A simple TypeScript configuration for Node.js",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/app.js",
+  "bin": {
+    "cmd": "./bin/cmd"
+  },
+  "files": [
+    "dist/**.*"
+  ],
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "dev": "nodemon || true",
+    "clean": "rimraf dist types",
+    "check": "prettier --check .",
+    "prebuild": "npm run check && npm run clean",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "test": "node --no-warnings=ExperimentalWarning --loader ts-node/esm test/test.ts",
+    "test:watch": "node --watch --no-warnings=ExperimentalWarning --loader ts-node/esm test/test.ts"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.21",
+    "@typescript-eslint/eslint-plugin": "6.12.0",
+    "@typescript-eslint/parser": "6.12.0",
+    "eslint": "8.54.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.1",
+    "nodemon": "3.0.1",
+    "prettier": "3.1.0",
+    "rimraf": "5.0.5",
+    "ts-node": "10.9.1",
+    "typescript": "5.3.2"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}

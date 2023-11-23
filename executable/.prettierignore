@@ -1,0 +1,6 @@
+bin/
+build/
+dist/
+types/
+*.md
+.eslintrc.cjs
