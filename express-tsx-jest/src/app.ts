@@ -3,14 +3,6 @@ import { Server } from "node:http";
 import { AddressInfo } from "node:net";
 import process from "node:process";
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: any;
-    }
-  }
-}
-
 const app = express();
 
 // Request middleware
@@ -43,7 +35,7 @@ app.get("/api/hello", (_: Request, res: Response): void => {
 // Error middleware
 app.use((req: Request, res: Response, next: NextFunction): void => {
   res.statusCode = 404;
-  throw new Error("Not found");
+  next(new Error("Not found"));
 });
 
 app.use((error: any, req: Request, res: Response, next: NextFunction): void => {
@@ -110,4 +102,10 @@ export async function stop(signal?: string | Error): Promise<void> {
     }
   }
   console.log("Server stopped");
+}
+
+// If this module is the main module, then start the server
+if (import.meta.url.endsWith(process.argv[1]!)) {
+  const port = process.env["PORT"] || "8080";
+  await start(port);
 }
