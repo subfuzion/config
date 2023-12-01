@@ -22,9 +22,9 @@
     "fix": "npm run lint -- --fix",
     "check": "prettier --check .",
     "format": "prettier --write .",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:watchAll": "jest --watchAll"
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --no-cache",
+    "test:watch": "npm test -- --watch",
+    "test:watchAll": "npm test -- --watchAll"
   },
   "devDependencies": {
     "@types/express": "4.17.21",

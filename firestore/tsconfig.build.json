@@ -9,6 +9,7 @@
     "declarationMap": true,
     "noEmit": false,
     "noEmitOnError": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "removeComments": true
   }
 }

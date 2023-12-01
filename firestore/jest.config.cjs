@@ -1,5 +1,8 @@
+const preset = require("ts-jest/presets/index.js");
+
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+  ...preset.defaultsESM,
   testEnvironment: "node",
   bail: 1,
   verbose: true,
@@ -7,6 +10,11 @@ module.exports = {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
   transform: {
-    "^.+\\.tsx?$": ["ts-jest"],
+    "^.+\\.tsx?$": ["ts-jest",
+      {
+        tsconfig: "tsconfig.json",
+        useESM: true,
+      },
+    ],
   },
 };

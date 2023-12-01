@@ -1,13 +1,9 @@
 # syntax = docker/dockerfile:1.2
 
-#######################################
 FROM node:21-slim AS builder
-#######################################
 
 WORKDIR /app
-COPY package.json \
-     package-lock.json* \
-     ./
+COPY package.json package-lock.json ./
 
 RUN npm ci
 COPY . .
