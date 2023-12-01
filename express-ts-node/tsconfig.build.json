@@ -7,8 +7,6 @@
     "declaration": true,
     "declarationDir": "./types",
     "declarationMap": true,
-    "noEmit": false,
-    "noEmitOnError": true,
     "outDir": "./dist",
     "removeComments": true
   }
